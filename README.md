@@ -8,38 +8,38 @@ The Non-Conformance App allows users to record non-conformance reports by analyz
 
 ### 1. Sign In
 
-- **Step 1:** Open the app.
-- **Step 2:** Click on **"Sign in with ZAPT"**.
-- **Step 3:** Choose a sign-in method (Google, Facebook, Apple, or Magic Link).
-- **Step 4:** Complete the authentication process.
-- **Outcome:** You are redirected to the home page of the app.
+1. Open the app.
+2. Click on **"Sign in with ZAPT"**.
+3. Choose a sign-in method (Google, Facebook, Apple, or Magic Link).
+4. Complete the authentication process.
+5. You are redirected to the home page of the app.
 
 ### 2. Submit a New Report
 
-- **Step 1:** On the home page, locate the **"New Report"** section.
-- **Step 2:** In the text area provided, describe the non-conformance event in detail.
-- **Step 3:** Click the **"Analyze Text"** button.
-  - The button will show a loading state while the AI processes the input.
-- **Step 4:** Review the extracted data displayed below the buttons.
-- **Step 5:** If satisfied, click the **"Save Report"** button.
-  - The report is saved, and the input field is cleared.
-- **Outcome:** The new report appears in the **"Your Reports"** section.
+1. On the home page, locate the **"New Report"** section.
+2. In the text area provided, describe the non-conformance event in detail.
+3. Click the **"Analyze Text"** button.
+   - The button will show a loading state while the AI processes the input.
+4. Review the extracted data displayed below the buttons.
+5. If satisfied, click the **"Save Report"** button.
+   - The report is saved, and the input field is cleared.
+6. The new report appears in the **"Your Reports"** section.
 
 ### 3. View Saved Reports
 
-- **Step 1:** Scroll to the **"Your Reports"** section on the home page.
-- **Step 2:** Browse through the list of saved reports.
-- **Details Displayed:**
-  - What happened
-  - When it happened
-  - Who was involved
-  - Outcome
-  - Next steps
+1. Scroll to the **"Your Reports"** section on the home page.
+2. Browse through the list of saved reports.
+   - Details Displayed:
+     - **What happened**
+     - **When it happened**
+     - **Who was involved**
+     - **Outcome**
+     - **Next steps**
 
 ### 4. Sign Out
 
-- **Step 1:** Click the **"Sign Out"** button at the top-right corner.
-- **Outcome:** You are signed out and redirected to the login page.
+1. Click the **"Sign Out"** button at the top-right corner.
+2. You are signed out and redirected to the login page.
 
 ## Features
 
@@ -49,9 +49,12 @@ The Non-Conformance App allows users to record non-conformance reports by analyz
 - **Data Persistence:** Reports are saved and associated with your account.
 - **Responsive Design:** The app works well on all screen sizes.
 - **User-Friendly Interface:** Intuitive and accessible UI components.
+- **Loading States:** Visual feedback during data processing and API calls.
+- **Error Handling:** Informative messages are displayed if errors occur during saving or fetching reports.
 
 ## Notes
 
 - Ensure all required fields are filled when submitting a report.
 - The app prevents multiple submissions while processing.
 - All reports are private and tied to your authenticated account.
+- If an error occurs while saving a report, an error message will be displayed.

@@ -2,7 +2,7 @@ import { reports } from '../drizzle/schema.js';
 import { authenticateUser } from "./_apiUtils.js"
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const result = await db.select()
       .from(reports)
       .where(eq(reports.userId, user.id))
-      .orderBy(reports.createdAt.desc())
+      .orderBy(desc(reports.createdAt))
       .limit(10);
 
     res.status(200).json(result);
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     if (error.message.includes('Authorization') || error.message.includes('token')) {
       res.status(401).json({ error: 'Authentication failed' });
     } else {
-      res.status(500).json({ error: 'Error fetching reports' });
+      res.status(500).json({ error: 'Error fetching reports', detail: error.message });
     }
   }
 }

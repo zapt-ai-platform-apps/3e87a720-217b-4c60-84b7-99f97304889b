@@ -34,10 +34,6 @@ export default async function handler(req, res) {
     res.status(201).json(newReport);
   } catch (error) {
     console.error('Error saving report:', error);
-    if (error.message.includes('Authorization') || error.message.includes('token')) {
-      res.status(401).json({ error: 'Authentication failed' });
-    } else {
-      res.status(500).json({ error: 'Error saving report' });
-    }
+    res.status(500).json({ error: 'Error saving report', detail: error.message });
   }
 }

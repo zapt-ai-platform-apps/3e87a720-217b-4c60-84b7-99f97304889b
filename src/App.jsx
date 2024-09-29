@@ -45,6 +45,10 @@ function App() {
 
   const fetchReports = async () => {
     const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      alert('User session not found. Please sign in again.');
+      return;
+    }
     const response = await fetch('/api/getReports', {
       headers: {
         'Authorization': `Bearer ${session.access_token}`
@@ -109,6 +113,11 @@ Text:
     setLoading(true);
     try {
       const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        alert('User session not found. Please sign in again.');
+        setLoading(false);
+        return;
+      }
       const response = await fetch('/api/saveReport', {
         method: 'POST',
         headers: {
@@ -126,10 +135,13 @@ Text:
         setInputText('');
         setExtractedData(null);
       } else {
-        console.error('Error saving report');
+        const errorResponse = await response.json();
+        console.error('Error saving report:', errorResponse.error);
+        alert(`Error saving report: ${errorResponse.error}`);
       }
     } catch (error) {
       console.error('Error saving report:', error);
+      alert('An unexpected error occurred while saving the report.');
     } finally {
       setLoading(false);
     }
@@ -140,7 +152,7 @@ Text:
       <Show
         when={currentPage() === 'homePage'}
         fallback={
-          <div class="flex items-center justify-center h-full">
+          <div class="flex items-center justify-center min-h-screen">
             <div class="w-full max-w-md p-8 bg-gray-800 rounded-xl shadow-lg">
               <h2 class="text-3xl font-bold mb-6 text-center text-green-400">Sign in with ZAPT</h2>
               <a
