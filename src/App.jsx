@@ -136,18 +136,18 @@ Text:
   };
 
   return (
-    <div class="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 p-4 text-gray-800">
+    <div class="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-4 text-gray-200">
       <Show
         when={currentPage() === 'homePage'}
         fallback={
           <div class="flex items-center justify-center h-full">
-            <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
-              <h2 class="text-3xl font-bold mb-6 text-center text-green-600">Sign in with ZAPT</h2>
+            <div class="w-full max-w-md p-8 bg-gray-800 rounded-xl shadow-lg">
+              <h2 class="text-3xl font-bold mb-6 text-center text-green-400">Sign in with ZAPT</h2>
               <a
                 href="https://www.zapt.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-blue-500 hover:underline mb-6 block text-center"
+                class="text-blue-300 hover:underline mb-6 block text-center"
               >
                 Learn more about ZAPT
               </a>
@@ -163,9 +163,9 @@ Text:
       >
         <div class="max-w-6xl mx-auto">
           <div class="flex justify-between items-center mb-8">
-            <h1 class="text-4xl font-bold text-green-600">Non-Conformance Reports</h1>
+            <h1 class="text-4xl font-bold text-green-400">Non-Conformance Reports</h1>
             <button
-              class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+              class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
               onClick={handleSignOut}
             >
               Sign Out
@@ -174,9 +174,9 @@ Text:
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="col-span-1">
-              <h2 class="text-2xl font-bold mb-4 text-green-600">New Report</h2>
+              <h2 class="text-2xl font-bold mb-4 text-green-400">New Report</h2>
               <textarea
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent box-border"
+                class="w-full p-3 border border-gray-600 bg-gray-800 text-gray-200 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent box-border"
                 rows="8"
                 placeholder="Describe the non-conformance event..."
                 value={inputText()}
@@ -185,7 +185,7 @@ Text:
               ></textarea>
               <div class="flex space-x-4 mt-4">
                 <button
-                  class={`flex-1 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  class={`flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() || !inputText() ? 'opacity-50 cursor-not-allowed' : ''}`}
                   onClick={handleAnalyzeText}
                   disabled={loading() || !inputText()}
                 >
@@ -194,7 +194,7 @@ Text:
                 </button>
                 <Show when={extractedData()}>
                   <button
-                    class={`flex-1 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    class={`flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
                     onClick={saveReport}
                     disabled={loading()}
                   >
@@ -203,8 +203,8 @@ Text:
                 </Show>
               </div>
               <Show when={extractedData()}>
-                <div class="mt-6 bg-white p-6 rounded-lg shadow-md">
-                  <h3 class="text-xl font-bold mb-4 text-green-600">Extracted Data</h3>
+                <div class="mt-6 bg-gray-800 p-6 rounded-lg shadow-md">
+                  <h3 class="text-xl font-bold mb-4 text-green-400">Extracted Data</h3>
                   <ul class="space-y-2">
                     <li><strong>What happened:</strong> {extractedData().what_happened}</li>
                     <li><strong>When did it happen:</strong> {extractedData().when_happened}</li>
@@ -216,16 +216,16 @@ Text:
               </Show>
             </div>
             <div class="col-span-1">
-              <h2 class="text-2xl font-bold mb-4 text-green-600">Your Reports</h2>
+              <h2 class="text-2xl font-bold mb-4 text-green-400">Your Reports</h2>
               <div class="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto pr-4">
                 <For each={reports()}>
                   {(report) => (
-                    <div class="bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                      <p class="text-gray-700 mb-2"><strong>What happened:</strong> {report.what_happened}</p>
-                      <p class="text-gray-700 mb-2"><strong>When did it happen:</strong> {report.when_happened}</p>
-                      <p class="text-gray-700 mb-2"><strong>Who was involved:</strong> {report.who_involved}</p>
-                      <p class="text-gray-700 mb-2"><strong>Outcome:</strong> {report.outcome}</p>
-                      <p class="text-gray-700"><strong>Next steps:</strong> {report.next_steps}</p>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                      <p class="mb-2"><strong>What happened:</strong> {report.whatHappened}</p>
+                      <p class="mb-2"><strong>When did it happen:</strong> {report.whenHappened}</p>
+                      <p class="mb-2"><strong>Who was involved:</strong> {report.whoInvolved}</p>
+                      <p class="mb-2"><strong>Outcome:</strong> {report.outcome}</p>
+                      <p><strong>Next steps:</strong> {report.nextSteps}</p>
                     </div>
                   )}
                 </For>

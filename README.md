@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Non-Conformance App allows users to record non-conformance reports by analyzing a text description of an event. The app uses AI to extract key information from the user's input and stores each report for future reference.
+The Non-Conformance App allows users to record non-conformance reports by analyzing a text description of an event. The app uses AI to extract key information from the user's input and stores each report for future reference. The app features a dark theme for a comfortable viewing experience in low-light environments.
 
 ## User Journey
 
@@ -43,6 +43,7 @@ The Non-Conformance App allows users to record non-conformance reports by analyz
 
 ## Features
 
+- **Dark Theme:** The app uses a dark color scheme for easy reading in low-light conditions.
 - **Authentication:** Secure login using ZAPT authentication with multiple providers.
 - **AI Analysis:** AI extracts key information from a textual description.
 - **Data Persistence:** Reports are saved and associated with your account.
